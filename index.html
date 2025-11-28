@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DailyBelongGuide</title>
+<meta name="description" content="DailyBelongGuide: Discover, copy, and explore tech belongings including mobile, laptop, PC setup, apps, software, and gadgets.">
+<meta name="keywords" content="Tech Belongings, Mobile Belongings, Laptop Belongings, PC Setup Belongings, Apps & Software Belongings, Accessories & Gadgets Belongings, DailyBelongGuide, Tech Setup, Tech Tools, Mobile Apps, Laptop Software, Gaming Setup, Work From Home Tech">
+<meta name="author" content="DailyBelongGuide">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f7fb;
+        color: #000;
+        margin: 0;
+        padding: 20px;
+        transition: 0.3s;
+    }
+
+    body.dark {
+        background: #1c1c1c;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+    }
+    h1 {
+        text-align: center;
+        color: inherit;
+    }
+    /* Search Bar */
+    #searchBar {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        outline: none;
+    }
+    #searchBar:focus {
+        border-color: #007bff;
+    }
+
+    /* Belong Box */
+    .belong {
+        background: white;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        position: relative;
+        transition: 0.3s;
+    }
+
+    body.dark .belong {
+        background: #333;
+        color: white;
+    }
+
+    .copyBtn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 6px 10px;
+        border: none;
+        background: #007bff;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .copyBtn:hover {
+        background: #005fcc;
+    }
+
+    /* small settings button */
+    .settings {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .settings button {
+        padding: 10px 18px;
+        margin: 5px;
+        background: #444;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .settings button:hover {
+        background: #222;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>DailyBelongGuide</h1>
+
+    <!-- SEARCH BAR -->
+    <input type="text" id="searchBar" placeholder="Search belongings...">
+
+    <!-- BELONG LIST -->
+    <div id="belongList">
+
+        <div class="belong">
+            <button class="copyBtn" onclick="copyText(this)">Copy</button>
+            <p>This is my first belong. You can copy it!</p>
+        </div>
+
+        <div class="belong">
+            <button class="copyBtn" onclick="copyText(this)">Copy</button>
+            <p>Another belong example for users to read and copy.</p>
+        </div>
+
+        <div class="belong">
+            <button class="copyBtn" onclick="copyText(this)">Copy</button>
+            <p>Write your own belong text here and add more sections.</p>
+        </div>
+
+    </div>
+
+    <!-- EXTRA SETTINGS -->
+    <div class="settings">
+        <button onclick="toggleDarkMode()">Dark Mode</button>
+        <button onclick="scrollTop()">Scroll Top</button>
+    </div>
+
+</div>
+
+<script>
+    // Search Filter
+    document.getElementById("searchBar").addEventListener("keyup", function() {
+        let filter = this.value.toLowerCase();
+        let belongs = document.querySelectorAll(".belong");
+
+        belongs.forEach(b => {
+            let text = b.innerText.toLowerCase();
+            b.style.display = text.includes(filter) ? "block" : "none";
+        });
+    });
+
+    // Copy Text Function
+    function copyText(btn) {
+        let text = btn.parentElement.innerText.replace("Copy", "").trim();
+        navigator.clipboard.writeText(text);
+
+        btn.innerText = "Copied!";
+        setTimeout(() => (btn.innerText = "Copy"), 1500);
+    }
+
+    // ⭐ DARK MODE TOGGLE FIXED
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark");
+    }
+
+    // Scroll to Top
+    function scrollTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+</script>
+
+</body>
+</html>
